@@ -1,0 +1,24 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile Detail</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <h1>Profile Detail</h1>
+    
+    <!-- Display profile details -->
+    <div class="profile">
+        <h2>{{ profile.name }}</h2>
+        <p>Email: {{ profile.email }}</p>
+        <p>Bio: {{ profile.bio }}</p>
+        <!-- Add more profile fields as needed -->
+    </div>
+    
+    <!-- Link back to the edit profile page -->
+    <a href="{% url 'edit_profile' %}">Edit Profile</a>
+</body>
+</html>

@@ -1,0 +1,13 @@
+<!-- userprofiles/templates/userprofiles/profile.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Profile</title>
+</head>
+<body>
+    <h1>{{ profile.user.username }}</h1>
+    <img src="{{ profile.profile_picture.url }}" alt="Profile Picture">
+    <p>{{ profile.biography }}</p>
+</body>
+</html>

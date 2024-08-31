@@ -1,0 +1,17 @@
+<!-- watchlists/templates/watchlists/watchlist_detail.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ watchlist.name }}</title>
+</head>
+<body>
+    <h1>{{ watchlist.name }}</h1>
+    <p>{{ watchlist.description }}</p>
+    <ul>
+        {% for movie in watchlist.movies.all %}
+            <li>{{ movie.title }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

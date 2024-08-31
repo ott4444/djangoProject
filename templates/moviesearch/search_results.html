@@ -1,0 +1,41 @@
+<!-- moviesearch/templates/moviesearch/search_results.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, 
+                                   initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Search Results</title>
+</head>
+<body>
+    <h1>Search Results</h1>
+    
+    <!-- Search Form with Label -->
+    <form method="GET" action="{% url 'search_movies' %}">
+        <label for="searchInput">Search for a movie:</label>
+        <input type="text" id="searchInput" name="searchInput" placeholder="Search for a movie..." value="{{ request.GET.query }}">
+        <button onclick="searchMovies()">Search</button>
+        <div id="MoviesGrid">
+
+        </div>
+    </form>
+
+    <!-- Search Results -->
+    {% if results %}
+        <ul>
+            {% for movie in results %}
+                <li>
+                    <h2>{{ movie.title }} ({{ movie.release_date|slice:":4" }})</h2>
+                    <img src="https://image.tmdb.org/t/p/w92{{ movie.poster_path }}" alt="{{ movie.title }} poster">
+                    <p>{{ movie.overview }}</p>
+                    <a href="{% url 'movie_detail' movie.id %}">More Details</a>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No movies found.</p>
+    {% endif %}
+<script src="index.js"></script>
+</body>
+</html>

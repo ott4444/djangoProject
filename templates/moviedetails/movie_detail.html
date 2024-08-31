@@ -1,0 +1,18 @@
+<!-- moviedetails/templates/moviedetails/movie_detail.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ movie.title }}</title>
+</head>
+<body>
+    {% if movie %}
+        <h1>{{ movie.title }} ({{ movie.release_date|slice:":4" }})</h1>
+        <img src="https://image.tmdb.org/t/p/w200{{ movie.poster_path }}" alt="{{ movie.title }}">
+        <p>{{ movie.overview }}</p>
+        <!-- Add more movie details here -->
+    {% else %}
+        <p>{{ error }}</p>
+    {% endif %}
+</body>
+</html>
