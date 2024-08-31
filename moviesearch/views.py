@@ -10,9 +10,9 @@ def sample_view(request):
     return render(request, 'sample.html')
 
 def search_movies(request):
-    query = request.GET.get('query')
-    if query:
-        url = f'{TMDB_SEARCH_URL}?api_key={settings.TMDB_API_KEY}&query={query}'
+    searchInput = request.GET.get('searchInput')
+    if searchInput:
+        url = f'{TMDB_SEARCH_URL}?api_key={settings.TMDB_API_KEY}&searchInput={searchInput}'
         response = requests.get(url)
         results = response.json().get('results', [])
     else:

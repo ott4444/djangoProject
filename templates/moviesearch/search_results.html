@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, 
                                    initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../../static/moviesearch/search/style.css">
     <title>Search Results</title>
 </head>
 <body>
@@ -14,7 +14,7 @@
     <!-- Search Form with Label -->
     <form method="GET" action="{% url 'search_movies' %}">
         <label for="searchInput">Search for a movie:</label>
-        <input type="text" id="searchInput" name="searchInput" placeholder="Search for a movie..." value="{{ request.GET.query }}">
+        <input type="text" id="searchInput" name="searchInput" placeholder="Search for a movie..." value="{{ request.GET.searchInput }}">
         <button onclick="searchMovies()">Search</button>
         <div id="MoviesGrid">
 
@@ -36,6 +36,6 @@
     {% else %}
         <p>No movies found.</p>
     {% endif %}
-<script src="index.js"></script>
+<script src="../../static/moviesearch/search/index.js"></script>
 </body>
 </html>
