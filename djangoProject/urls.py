@@ -5,7 +5,7 @@ from moviedetails import urls as moviedetails_urls
 
 
 urlpatterns = [
-    path('', admin.site.urls), # Redirect root URL to admin page
+    path('admin/', admin.site.urls), # Redirect root URL to admin page
     path('profile/', include('userprofiles.urls')),
     path('moviesearch/', include('moviesearch.urls')),
     path('moviedetails/', include(moviedetails_urls)),
