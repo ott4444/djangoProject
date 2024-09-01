@@ -11,15 +11,13 @@
 <body>
     <h1>Search Results</h1>
     
-    <!-- Search Form with Label -->
-    <form method="GET" action="{% url 'search_movies' %}">
-        <label for="searchInput">Search for a movie:</label>
-        <input type="text" id="searchInput" name="searchInput" placeholder="Search for a movie..." value="{{ request.GET.searchInput }}">
-        <button onclick="searchMovies()">Search</button>
-        <div id="MoviesGrid">
+<form id="searchForm" onsubmit="searchMovies(event)">
+    <label for="searchInput">Search for a movie:</label>
+    <input type="text" id="searchInput" name="searchInput" placeholder="Search for a movie..." value="">
+    <button type="submit">Search</button>
+    <div id="MoviesGrid"></div>
+</form>
 
-        </div>
-    </form>
 
     <!-- Search Results -->
     {% if results %}

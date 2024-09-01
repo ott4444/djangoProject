@@ -31,7 +31,9 @@ function fetchmovies() {
         });
 }
 
-function searchMovies() {
+function searchMovies(event) {
+    event.preventDefault();  // Prevent the default form submission
+
     // TMDb API key
     const apiKey = '71c28d0bbc034d9385032100b32e03db';
     const searchInput = document.getElementById('searchInput').value;
@@ -41,7 +43,6 @@ function searchMovies() {
 
     // Search result validation
     if (searchInput.trim() !== '') {
-
         // Display loading message
         MoviesGrid.innerHTML = '<p>Loading movies...</p>';
 
@@ -72,17 +73,22 @@ function moviestoshow(movies) {
 
     // Display each movie in the results
     movies.forEach(movie => {
-        movie.release_date = undefined;
-        movie.poster_path = undefined;
+        const posterPath = movie.poster_path ? `https://image.tmdb.org/t/p/w500${movie.poster_path}` : 'placeholder_image_url';
+        const releaseYear = movie.release_date ? movie.release_date.slice(0, 4) : 'N/A';
+
         const movieCard = document.createElement('div');
         movieCard.classList.add('movie-card');
 
+        // Link each movie to its detail page using Django's URL reversing
         movieCard.innerHTML = `
-            <img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" alt="${movie.title}">
-            <h2>${movie.title}</h2>
-            <p>${movie.release_date.slice(0, 4)}</p>
+            <a href="/moviesearch/movie/${movie.id}/">
+                <img src="${posterPath}" alt="${movie.title}">
+                <h2>${movie.title}</h2>
+                <p>${releaseYear}</p>
+            </a>
         `;
 
         MoviesGrid.appendChild(movieCard);
     });
 }
+
