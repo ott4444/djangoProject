@@ -1,5 +1,5 @@
-from django.contrib import admin
-from .models import Movie  # Adjust import path if needed
+
+#from .models import Movie  # Adjust import path if needed
 
 #class MovieAdmin(admin.ModelAdmin):
 #    list_display = ('title', 'release_date', 'overview', 'tmdb_id', 'release_date', 'genre',
@@ -8,3 +8,8 @@ from .models import Movie  # Adjust import path if needed
 
 #admin.site.register(Movie, MovieAdmin)
 
+from django.contrib import admin
+from .models import Search, SearchMovie
+
+admin.site.register(Search)
+admin.site.register(SearchMovie)

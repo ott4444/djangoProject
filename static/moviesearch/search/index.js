@@ -73,7 +73,7 @@ function moviestoshow(movies) {
 
     // Display each movie in the results
     movies.forEach(movie => {
-        const posterPath = movie.poster_path ? `https://image.tmdb.org/t/p/w500${movie.poster_path}` : 'placeholder_image_url';
+        const posterPath = movie.poster_path ? `https://image.tmdb.org/t/p/w500${movie.poster_path}` : '/static/images/placeholder.png';
         const releaseYear = movie.release_date ? movie.release_date.slice(0, 4) : 'N/A';
 
         const movieCard = document.createElement('div');
@@ -81,7 +81,7 @@ function moviestoshow(movies) {
 
         // Link each movie to its detail page using Django's URL reversing
         movieCard.innerHTML = `
-            <a href="/moviesearch/movie/${movie.id}/">
+             <a href="/moviesearch/movie/${movie.tmdb_id}/">
                 <img src="${posterPath}" alt="${movie.title}">
                 <h2>${movie.title}</h2>
                 <p>${releaseYear}</p>
